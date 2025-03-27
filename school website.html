@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            background-image:radial-gradient(yellow,green);
+        }
+        /* Default styling for larger screens */
+body {
+    font-size: 18px;
+    padding: 20px;
+}
+
+/* For tablets and smaller screens */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+
+/* For mobile screens */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+        padding: 5px;
+    }
+}
+
+        
+        .arrows{
+            position: relative;
+            width: 600px;
+            overflow: hidden;
+        }
+        .images {
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+        .image-container {
+            position: relative;
+        }
+        .images img {
+            width: 600px;
+            height: 400px;
+        }
+        .text-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 18px;
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .left {
+            left: 10px;
+        }
+        .right {
+            right: 10px;
+        }
+        .indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display:flex;
+            gap: 5px;
+        }
+        .indicator{
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #bbb;
+            cursor: pointer;
+        }
+        .indicator.active {
+            background: #333;
+        }
+        a{
+            text-decoration: none;
+        }
+
+        #cons{
+            background-color: white;
+        }
+   /* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    padding-top: 70px; /* Prevent content from hiding under navbar */
+}
+
+/* Fixed Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #4CAF50;
+    padding: 15px 20px;
+    color: white;
+    z-index: 1000;
+}
+
+/* Logo Image */
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Dropdown Button */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content li {
+    list-style: none;
+}
+
+.dropdown-content li a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Menu Button for Small Screens */
+.menu-btn {
+    display: none;
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: #4CAF50;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .dropdown-content {
+        position: static; /* Make dropdown work on small screens */
+        width: 50%; /* Ensure the dropdown takes full width */
+    }
+}
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home page</title>
+</head>
+<body>
+    <nav class="navbar">
+        <!-- Logo Image -->
+        <img src="avatar.png" alt="Logo" class="logo-img">
+        <h2 align="center">NASSORO SEIF SECONDARY SCHOOL<br>MVOMERO DISTRICT COUNCIL</h2>
+        
+        <!-- Menu Button (Toggle) -->
+        <button class="menu-btn" onclick="toggleMenu()">☰ </button>
+
+        <!-- Navigation Links -->
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#">Home</a></li>
+            <li><a href="#school">About</a></li>
+            <!-- Dropdown for Results -->
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Results</a>
+                <ul class="dropdown-content">
+                    <li><a href="#">Form 1</a></li>
+                    <li><a href="#">Form 2</a></li>
+                    <li><a href="#">Form 3</a></li>
+                    <li><a href="#">Form 4</a></li>
+                </ul>
+            </li>
+            <li><a href="#con">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <center><div class="arrows">
+        <button class="arrow left" onclick="prevImage()">&#8249;</button>
+        <div class="images" id="imageContainer">
+            <div class="imageecontainer">
+            <img src="PHOTO-2025-03-21-20-40-43.jpg" alt="Image 1">
+            <div class="text-overlay">staff member of the school</div>
+            </div>
+            <div class="image-container">
+            <img src="IMG_1963.jpg" alt="me" width="12000px">
+            <div class="text-overlay">student of the year</div>
+            </div>
+            <div class="image-container">
+            <img src="IMG_5434.jpg" alt="Image 2" width="1200px">
+            <div class="text-overlay">sample SCHOOL</div>
+        </div>
+        <button class="arrow right" onclick="nextImage()">&#8250;</button>
+        
+        <div class="indicators" id="indicators"></div>
+    </div>
+    <div id="school">
+        <h1>SCHOOL HISTORY</h1>
+    </div>
+</center>
+    <div id="subject">
+        <table border="1" align="center" style="border-collapse: collapse;">
+            <caption>SCHOOL SUBJECT AND COMBINATION OFFER</caption>
+        <tr>
+            <th>ARTS</th>
+            <th>SCIENCE</th>
+            <th>BUSSINESS</th>
+        </tr>
+        <tr>
+            <td><ol>
+                <li>CIVICS</li>
+                <li>HISTORY</li>
+                <li>GEOGRAPHY</li>
+                <li>KISWAHILI</li>
+                <li>ENGLISH</li>
+            </ol></td>
+            <td>
+                <ol>
+                    <li>COMPUTER SCIENCE</li>
+                    <li>MATHEMATICS</li>
+                    <li>PHYSICS</li>
+                    <li>CHEMISTRY</li>
+                    <li>BIOLOGY</li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                    <li>BUSSINESS STUDIES</li>
+                </ol>
+            </td>
+        </tr>
+        </table>
+    </div>
+    <div>
+        <table border="1" align="center" style="border-collapse: collapse;">
+            <caption>TEACHERS WITH THEIR SUBJECTS AND PHONE NUMBERS</caption>
+            <tr>
+                <th>TEACHERS NAME</th>
+                <th>SUBJECT</th>
+                <th>PHONE NUMBERS</th>
+                <th>CLASS</th>
+            </tr>
+            <tr>
+                <td rowspan="2">1.STEVEN GEORGE NGODA</td>
+                <td>1.COMPUTER SCIENCE</td>
+                <td rowspan="2">+255 78 298 032</td>
+                <td>FORM ONE</td>
+            </tr>
+                <tr>
+                <td>2.MATHEMATICS</td>
+                
+                <td>FORM THREE</td>
+            </tr>
+        </table>
+    </div>
+    <div id="con" bgcolor="white">
+        <h1>CONTACTS US</h1>
+    
+        <hr>
+        <div id="cons">
+        <div align="left">
+            <img src="download.png" height="20px" width="20px" alt="callicon">+255 746012212
+            Head of school
+        </div>
+        <div align="right">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2928.720419292373!2d37.6416087!3d-6.138217999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1845357de601b33f%3A0x6cbadbb51c20cbdc!2sNassoro%20Seif%20Secondary%20School!5e1!3m2!1sen!2stz!4v1743107601871!5m2!1sen!2stz" 
+        width="300px" height="300px"  style="border:1;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    </div>
+    </div>
+    <hr>
+    <footer align="center">
+        This website is designed and hosted by sir steven ngoda "do not &copy;Copyright"
+    </footer>
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll(".images img");
+        const imageContainer = document.getElementById("imageContainer");
+        const imageecontainer = document.getElementById("imageecontainer");
+        const indicatorsContainer = document.getElementById("indicators");
+
+        function showImage(index) {
+            if (index < 0) {
+                currentIndex = images.length - 1;
+            } else if (index >= images.length) {
+                currentIndex = 0;
+            } else {
+                currentIndex = index;
+            }
+            imageContainer.style.transform = `translateX(-${currentIndex * 600}px)`;
+            updateIndicators();
+        }
+
+        function prevImage() {
+            showImage(currentIndex - 1);
+            resetAutoplay();
+        }
+
+        function nextImage() {
+            showImage(currentIndex + 1);
+            resetAutoplay();
+        }
+
+        function startAutoplay() {
+            return setInterval(() => {
+                nextImage();
+            }, 3000);
+        }
+
+        function resetAutoplay() {
+            clearInterval(autoplayInterval);
+            autoplayInterval = startAutoplay();
+        }
+
+        function createIndicators() {
+            images.forEach((_, index) => {
+                const indicator = document.createElement("div");
+                indicator.classList.add("indicator");
+                indicator.addEventListener("click", () => {
+                    showImage(index);
+                    resetAutoplay();
+                });
+                indicatorsContainer.appendChild(indicator);
+            });
+            updateIndicators();
+        }
+
+        function updateIndicators() {
+            const indicators = document.querySelectorAll(".indicator");
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle("active", index === currentIndex);
+            });
+        }
+
+        createIndicators();
+        let autoplayInterval = startAutoplay();
+
+function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+        }
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+        }
+</script>
+</body>
+</html>
